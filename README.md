@@ -1,6 +1,6 @@
 # Core Knowledge Deficits in Multi-Modal Language Models
 
-This is the repository that contains source code for the [core-knowledge website](), adopted from [Nerfies website](https://williamium3000.github.io/core-knowledge/).
+This is the repository that contains source code for the [core-knowledge website](), adopted from [Nerfies website](https://nerfies.github.io/).
 You can find their source code [here](https://github.com/nerfies/nerfies.github.io)
 
 # Website License
