@@ -1,0 +1,717 @@
+---
+layout: default
+title: "Home"
+description: "Core Knowledge Deficits in Multi-Modal Language Models"
+---
+
+<!-- Hero Section -->
+<section class="gradient-bg text-slate-700 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8 max-w-4xl mx-auto">
+            Core Knowledge Deficits in Multi-Modal Language Models
+        </h1>
+        
+        <!-- Simplified TLDR with cleaner formatting -->
+        <div class="text-lg md:text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed space-y-4 mb-12">
+            <p>
+                While Multi-modal Large Language Models (MLLMs) demonstrate impressive abilities over high-level perception and reasoning, their robustness in the wild remains limited, often falling short on tasks that are intuitive and effortless for humans. We examine the hypothesis that these deficiencies stem from the absence of core knowledge—rudimentary cognitive abilities innate to humans from early childhood. 
+            </p>
+            <p>
+                To explore the core knowledge representation in MLLMs, we introduce <strong>CoreCognition</strong>, a large-scale benchmark encompassing 12 core knowledge concepts grounded in developmental cognitive science.
+                We evaluate 230 models with 11 different prompts, leading to a total of 2,530 data points for analysis. Our experiments uncover four key findings, collectively demonstrating core knowledge deficits in MLLMs: they consistently underperform and show reduced, or even absent, scalability on low-level abilities relative to high-level ones.
+            </p>
+            <p>
+                Finally, we propose <strong>Concept Hacking</strong>, a novel controlled evaluation method, that reveals MLLMs fail to progress toward genuine core knowledge understanding, but instead rely on shortcut learning as they scale.
+            </p>
+        </div>
+        
+        <!-- Updated CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <a href="{{ site.paper_url | default: '#' }}" 
+               class="inline-flex items-center bg-white text-slate-700 px-6 py-2.5 rounded-lg font-semibold hover:bg-slate-50 transition-all transform hover:scale-105 shadow-lg border border-slate-200">
+                📄 <span class="ml-2">Paper</span>
+            </a>
+            <a href="{{ site.huggingface_url | default: '#' }}" 
+               class="inline-flex items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg">
+                🤗 <span class="ml-2">Dataset</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Authors Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="text-base md:text-lg text-gray-700 mb-6">
+            <div class="space-y-3">
+                <!-- First line of authors (5 authors) -->
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <span><a href="https://williamium3000.github.io" target="_blank">Yijiang Li</a><sup>1</sup></span>
+                <span><a href="https://kaiagaoqy.github.io/personalwebsite" target="_blank">Qingying Gao</a><sup>2,§</sup></span>
+                <span><a href="https://openreview.net/profile?id=~Tianwei_Zhao1" target="_blank">Tianwei Zhao</a><sup>2,§</sup></span>
+                <span><a href="https://openreview.net/profile?id=%7EBingyang_Wang2" target="_blank">Bingyang Wang</a><sup>3,§</sup></span>
+                <span><a href="https://openreview.net/profile?id=~Haoran_Sun14" target="_blank">Haoran Sun</a><sup>2</sup></span>
+                </div>
+                <!-- Second line of authors (5 authors) -->
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <span><a href="https://openreview.net/profile?id=~Haiyun_Lyu1" target="_blank">Haiyun Lyu</a><sup>4</sup></span>
+                <span><a href="https://rdhawkins.com/" target="_blank">Robert D. Hawkins</a><sup>5</sup></span>
+                <span><a href="http://www.svcl.ucsd.edu/people/nuno/" target="_blank">Nuno Vasconcelos</a><sup>1</sup></span>
+                <span><a href="https://cris.bgu.ac.il/en/persons/tal-golan" target="_blank">Tal Golan</a><sup>6</sup></span>
+                <span><a href="https://ihzedoul.com" target="_blank">Dezhi Luo</a><sup>7,8,†</sup></span>
+                <span><a href="https://hokindeng.github.io" target="_blank">Hokin Deng</a><sup>9,†</sup></span>
+            </div>
+        </div>
+        </div>
+        <div class="text-base md:text-lg text-gray-600">
+            <div class="mb-4 font-bold">
+                <sup>1</sup>University of California San Diego &emsp;
+                <sup>2</sup>Johns Hopkins University &emsp;
+                <sup>3</sup>Emory University &emsp;
+                <sup>4</sup>University of North Carolina at Chapel Hill &emsp;
+            </div>
+            <div class="mb-4 font-bold">
+                <sup>5</sup>Stanford University &emsp;
+                <sup>6</sup>Ben-Gurion University of the Negev &emsp;
+            </div>
+            <div class="mb-4 font-bold">
+                <sup>7</sup>University of Michigan &emsp;
+                <sup>8</sup>University College London &emsp;
+                <sup>9</sup>Carnegie Mellon University &emsp;
+            </div>
+            <p class="text-sm md:text-base text-gray-500">
+                <sup>§</sup>Equal Contribution &emsp; 
+                <sup>†</sup>Corresponding author
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CoreCognition Benchmark Overview -->
+
+<section class="py-16 bg-gradient-to-br from-purple-50 to-red-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">CoreCognition Benchmark</h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+                CoreCognition evaluates twelve foundational cognitive concepts through a large-scale suite of controlled visual question-answer tasks. It reveals systematic <strong>core knowledge deficits</strong> in today's multi-modal large language models (MLLMs).
+            </p>
+        </div>
+
+        <!-- Illustration of the 12 concepts -->
+        <div class="paper-figure-container mx-auto max-w-4xl mb-12 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <img src="{{ '/assets/images/CogDev_illustration_vARXIV.png' | relative_url }}" 
+                 alt="Illustration of the twelve core cognitive concepts" 
+                 class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+
+        <div class="space-y-12 text-gray-700">
+            <!-- Dataset Curation Card -->
+            <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="flex items-center mb-6">
+                    <div class="bg-gradient-to-r from-indigo-500 to-blue-600 p-4 rounded-xl mr-4 shadow-lg">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Dataset Curation</h3>
+                </div>
+                
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Building upon the above cognitive framework, we operationalize theoretical constructs into explicit examples designed to probe specific core abilities in MLLMs. To ensure conceptual integrity and interdisciplinary rigor, we establish criteria that define successful instances:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Criterion 1: Discriminativeness -->
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-500 p-2 rounded-lg mr-3">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+                                        <circle cx="12" cy="12" r="6" stroke-width="2"></circle>
+                                        <circle cx="12" cy="12" r="2" stroke-width="2" fill="currentColor"></circle>
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-900">Discriminativeness</h4>
+                            </div>
+                            <p class="text-sm text-gray-700 leading-relaxed">
+                                Instances should be structured such that models lacking the targeted core knowledge necessarily select the <strong class="text-red-600">incorrect answers</strong>, thereby ensuring the discriminative power.
+                            </p>
+                        </div>
+                        
+                        <!-- Criterion 2: Minimal Confounding -->
+                        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl border border-emerald-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-emerald-500 p-2 rounded-lg mr-3">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 01.8 1.6l-6.262 8.268A1 1 0 0014 13.8V19a1 1 0 01-1.447.894l-4-2A1 1 0 018 17.1V13.8a1 1 0 00-.2-.6L1.538 4.6A1 1 0 013 4z"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-900">Minimal Confounding</h4>
+                            </div>
+                            <p class="text-sm text-gray-700 leading-relaxed">
+                                Questions should minimize reliance on confounding capabilities, such as <strong>object recognition</strong>, and must avoid conceptual overlap with other core knowledge included in the benchmark.
+                            </p>
+                        </div>
+                        
+                        <!-- Criterion 3: Minimal Text Shortcut -->
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-purple-500 p-2 rounded-lg mr-3">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-900">Minimal Text Shortcut</h4>
+                            </div>
+                            <p class="text-sm text-gray-700 leading-relaxed">
+                                Instances should be crafted so that answers cannot be derived through textual shortcuts alone but require <strong class="text-blue-600">genuine multimodal comprehension</strong>.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-gray-50 to-blue-50 p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                        <div class="flex items-center">
+                            <div class="bg-gradient-to-r from-gray-600 to-blue-600 p-3 rounded-full mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Expert Collaboration</h4>
+                                <p class="text-gray-700">
+                                    A total of <strong class="text-blue-600">12</strong> annotators, each with a college-level education in <strong>cognitive science</strong>, <strong>computer science</strong>, or <strong>statistics</strong>, collaborate on the curation of CoreCognition.
+                                </p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Twelve Core Concepts Card -->
+            <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="flex items-center mb-6">
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4 rounded-xl mr-4 shadow-lg">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Twelve Core Concepts</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 1. Permanence -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #DBEAFE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #C3DDFD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">1</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Permanence</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">Objects do not cease to exist when they are no longer perceived.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. Continuity -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #DAEBFE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #C2DDFD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">2</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Continuity</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">Objects persist as unified, cohesive entities across space and time.</p>
+                            </div>
+                            </div>
+                        </div>
+                        
+                    <!-- 3. Boundary -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D9EDFE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #C1DFFD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">3</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Boundary</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">The transition from one object to another.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. Spatiality -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D8EEFE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #C0E1FD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">4</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Spatiality</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">The <em>a priori</em> understanding of the Euclidean properties of the world.</p>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- 5. Perceptual Constancy -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D7F0FE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #BFE3FD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">5</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Perceptual Constancy</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">Changes in appearances don't mean changes in physical properties.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Intuitive Physics -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D6F1FE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #BEE4FD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">6</span>
+                    </div>
+                    <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Intuitive Physics</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">Intuitions about the laws of how things interact in the physical world.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Perspective -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D4F3FE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #BCE6FD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">7</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Perspective</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">To see what others see.</p>
+                    </div>
+                </div>
+                    </div>
+                    
+                    <!-- 8. Hierarchy -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D3F4FE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #BBE7FD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">8</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Hierarchy</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">Understanding of inclusion and exclusion of objects and categories.</p>
+                            </div>
+                            </div>
+                        </div>
+                        
+                    <!-- 9. Conservation -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D2F6FE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #BAE9FD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">9</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Conservation</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">Invariances of properties despite transformations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 10. Tool Use -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D1F7FE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #B9EAFD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">10</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Tool Use</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">The capacity to manipulate specific objects to achieve goals.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 11. Intentionality -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D0F9FE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #B8ECFD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">11</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Intentionality</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">To see what others want.</p>
+                </div>
+            </div>
+        </div>
+
+                    <!-- 12. Mechanical Reasoning -->
+                    <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #CFFAFE;">
+                        <div class="flex items-start">
+                            <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #B7EDFD;">
+                                <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">12</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Mechanical Reasoning</h4>
+                                <p class="text-sm text-gray-700 leading-relaxed">Inferring actions from system states and vice versa.</p>
+                            </div>
+                        </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Dataset Statistics Card -->
+            <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="flex items-center mb-8">
+                    <div class="bg-gradient-to-r from-emerald-500 to-teal-600 p-4 rounded-xl mr-4 shadow-lg">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Dataset Statistics</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <!-- Statistic 1 -->
+                    <div>
+                        <div class="text-5xl font-bold text-orange-500 mb-2">230</div>
+                        <div class="text-gray-700 font-medium">MLLMs Evaluated</div>
+                    </div>
+                    
+                    <!-- Statistic 2 -->
+                    <div>
+                        <div class="text-5xl font-bold text-red-500 mb-2">11</div>
+                        <div class="text-gray-700 font-medium">Prompt Formats</div>
+                </div>
+                
+                    <!-- Statistic 3 -->
+                    <div>
+                        <div class="text-5xl font-bold text-purple-500 mb-2">&gt;26k</div>
+                        <div class="text-gray-700 font-medium">Total Judgments</div>
+                </div>
+                
+                    <!-- Statistic 4 -->
+                    <div>
+                        <div class="text-5xl font-bold text-blue-500 mb-2">2,530</div>
+                        <div class="text-gray-700 font-medium">Image-Question Pairs</div>
+                    </div>
+                </div>
+            </div>
+            <div class="paper-figure-container mb-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                <img src="{{ '/assets/images/figure2_camready_new.png' | relative_url }}" 
+                     alt="Illustration of 12 core concepts tasks"
+                     class="w-full h-auto rounded-lg shadow-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Findings -->
+
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Key Findings</h2>            
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Our study uncovers <strong>four primary shortcomings</strong> shared by state-of-the-art MLLMs:
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Finding 1 -->
+            <div class="rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer active:scale-95" style="background: linear-gradient(135deg, #a5b4ff 0%, #c084fc 100%);">
+                <div class="flex items-start mb-6">
+                    <div class="bg-black/20 p-4 rounded-xl mr-6 shadow-lg flex-shrink-0">
+                        <span class="w-10 h-10 flex items-center justify-center font-bold text-3xl text-white">1</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Core Knowledge Deficits</h3>
+                        <p class="text-base text-gray-700 leading-relaxed">MLLMs excel at higher-level abilities associated with later developmental stages but consistently struggle with lower-level abilities that typically emerge earlier in human cognition.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Finding 2 -->
+            <div class="rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer active:scale-95" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                <div class="flex items-start mb-6">
+                    <div class="bg-black/20 p-4 rounded-xl mr-6 shadow-lg flex-shrink-0">
+                        <span class="w-10 h-10 flex items-center justify-center font-bold text-3xl text-white">2</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Misaligned Dependency</h3>
+                        <p class="text-base text-gray-700 leading-relaxed">Core abilities exhibit weak cross-stage correlations, indicating an absence of developmental scaffolding.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Finding 3 -->
+            <div class="rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer active:scale-95" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                <div class="flex items-start mb-6">
+                    <div class="bg-black/20 p-4 rounded-xl mr-6 shadow-lg flex-shrink-0">
+                        <span class="w-10 h-10 flex items-center justify-center font-bold text-3xl text-white">3</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Predictability</h3>
+                        <p class="text-base text-gray-700 leading-relaxed">Performance on core knowledge is predictive of higher-level abilities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Finding 4 -->
+            <div class="rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer active:scale-95" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                <div class="flex items-start mb-6">
+                    <div class="bg-black/20 p-4 rounded-xl mr-6 shadow-lg flex-shrink-0">
+                        <span class="w-10 h-10 flex items-center justify-center font-bold text-3xl text-white">4</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Not Scaling</h3>
+                        <p class="text-base text-gray-700 leading-relaxed">MLLMs exhibit limited or no scalability on low-level abilities compared to high-level abilities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Knowledge Deficit Figure -->
+<section class="py-16 bg-gradient-to-br from-red-50 to-pink-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">Core Knowledge Deficits</h2>     
+        <p class="text-xl text-gray-700 max-w-4xl mx-auto text-center leading-relaxed mb-8">
+            Modern MLLMs exhibit a pronounced <strong class="text-red-600">"core knowledge deficit"</strong>: they perform significantly better on <strong>higher-level abilities</strong>, sometimes comparable to or even surpassing humans, yet struggle with <strong>lower-level abilities</strong> that are associated with early developmental stages. This disparity is <em>statistically significant</em> and contrasts sharply with human performance, which remains consistently high across all stages.
+        </p>
+        <div class="paper-figure-container mx-auto max-w-3xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <img src="{{ '/assets/images/fig3_v2_single.png' | relative_url }}" 
+                 alt="Visualization of core knowledge deficit across abilities" 
+                 class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+    </div>
+</section>
+
+<!-- Dependencies Between Core Abilities -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">Dependencies Between Core Abilities</h2>
+        <p class="text-xl text-gray-700 max-w-4xl mx-auto text-center leading-relaxed mb-8">
+            Examining the interdependencies among core abilities provides a principled understanding of whether models develop coherent, hierarchically structured competencies akin to those seen in humans. To quantify the degree of co-variation consistent with developmental hierarchies, we compute Pearson correlations between performances across all 12 abilities. The results reveal a distinct divergence: many correlations are <strong class="text-orange-600">modest (ρ < 0.4)</strong>, while some clusters exhibit <strong class="text-green-600">strong alignment (ρ > 0.65)</strong>.
+        </p>
+        <div class="paper-figure-container mx-auto max-w-3xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <img src="{{ '/assets/images/top120total_corr(selected_v2).png' | relative_url }}" 
+                 alt="Correlation heatmap among 12 core abilities" 
+                 class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+    </div>
+</section>
+
+<!-- Core Abilities Predict High-Level Performance -->
+<section class="py-16 bg-gradient-to-br from-pink-50 to-orange-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">Core Abilities Predict Higher-Level Abilities</h2>
+        <p class="text-xl text-gray-700 max-w-4xl mx-auto text-center leading-relaxed mb-8">
+            Strong performance on core abilities reliably predicts higher performance on most high-level abilities and public benchmarks. Concretely, we analyze Pearson correlations between the performance on <strong>12 core cognitive concepts</strong> (across three developmental stages) and the performance of the same models on <strong class="text-blue-600">26 public benchmarks</strong> and <strong class="text-purple-600">9 higher-level abilities</strong> defined by SEED-Bench 1 & 2. Except for <em>Perspective</em> and <em>Intuitive Physics</em>, core abilities strongly predict performance on public benchmarks (except ChartQA) and higher-level abilities. We hypothesize that the exception of ChartQA arises because textual understanding is largely orthogonal to the core abilities examined here.
+        </p>
+        <div class="paper-figure-container mx-auto max-w-7xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <img src="{{ '/assets/images/bench_hl_corr_heatmap_p0.png' | relative_url }}" 
+                 alt="Heatmap correlating core abilities with high-level benchmarks" 
+                 class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+    </div>
+</section>
+
+<!-- Scaling Trends -->
+
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Scaling Effect on Core Knowledge?</h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                <strong class="text-red-600">Not for low-level abilities!</strong> We evaluate the extent to which scaling applies to low-level core abilities rooted in core knowledge. By fitting linear regression to the performance of <strong>230 models</strong> of varying sizes on these abilities, we estimate the scaling effect as the slope of the regression line.
+            </p>
+        </div>
+
+        <div class="paper-figure-container mx-auto max-w-4xl mb-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <img src="{{ '/assets/images/scalling_v2.png' | relative_url }}" 
+                 alt="Scaling analysis across model sizes" 
+                 class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+            <p class="text-lg text-gray-700 leading-relaxed text-center">
+                Our results reveal a clear dissociation between <strong class="text-blue-600">low-level</strong> and <strong class="text-green-600">high-level</strong> abilities regarding scaling effects. For seven out of nine low-level abilities—excluding hierarchical relation and perceptual constancy—in the <em>Sensorimotor</em> and <em>Concrete Operational</em> stages, model performance shows significantly less improvement with increasing size, compared to the higher-level <em>Formal Operational</em> stage. Notably, perspective-taking ability even declines with scale, likely due to a persistent egocentric bias that intensifies as models grow larger. These findings indicate that <strong class="text-orange-600">scaling primarily benefits high-level reasoning</strong>, while its impact on low-level cognitive abilities is limited or even negative. This suggests that simply increasing model size is insufficient for developing core knowledge in MLLMs.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Concept Hacking -->
+<section class="py-16 bg-gradient-to-br from-orange-50 to-white-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Concept Hacking: A Controlled Experiment</h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                We introduce <strong class="text-indigo-600">concept hacking</strong>, which systematically manipulates task-relevant features while preserving task-irrelevant conditions to completely invert ground truth labels. As exemplified in the figure below, <strong>45</strong> samples from CoreCognition are paired with a manipulated version containing identical questions but opposite correct answers.
+            </p>
+        </div>
+
+        <div class="paper-figure-container mx-auto max-w-5xl mb-12 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <img src="{{ '/assets/images/final_3.png' | relative_url }}" 
+                 alt="Concept hacking methodology and examples" 
+                 class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+        
+        <div class="max-w-4xl mx-auto mb-12">
+            <p class="text-lg text-gray-700 leading-relaxed text-center mb-8">
+                Given a pair of tasks, it yields <strong>3</strong> possible MLLM response patterns:
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- Core Knowledge -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-500 p-2 rounded-lg mr-3">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900">Core Knowledge</h4>
+                    </div>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        Correct responses on both controlled and manipulated tasks indicate genuine conceptual understanding.
+                    </p>
+                </div>
+                
+                <!-- Shortcut-taking -->
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-500 p-2 rounded-lg mr-3">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900">Shortcut-taking</h4>
+                    </div>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        Models exploiting training data similarities perform well on controlled tasks but fail when familiar patterns are paired with inverted labels.
+                    </p>
+                </div>
+                
+                <!-- Core Deficits -->
+                <div class="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl border border-red-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-500 p-2 rounded-lg mr-3">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900">Core Deficits</h4>
+                    </div>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        Incorrect responses to controlled tasks, regardless of manipulation performance, indicate the absence of core knowledge.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="paper-figure-container mx-auto max-w-5xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                <img src="{{ '/assets/images/parrot_p0_scores_merge_match_model_camready.png' | relative_url }}" 
+                     alt="MLLM response patterns analysis results" 
+                     class="w-full h-auto rounded-lg shadow-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Citation -->
+<section class="py-16 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Citation</h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                If you find this project useful in your research, please consider citing:
+            </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gray-800 p-6 rounded-xl">
+                <pre><code class="language-latex">@article{li2025core,
+      title={Core Knowledge Deficits in Multi-Modal Language Models}, 
+    author={Li, Yijiang and Gao, Qingying and Zhao, Tianwei and Wang, Bingyang and Sun, Haoran and Lyu, Haiyun and Luo, Dezhi and Deng, Hokin},
+    journal={arXiv preprint arXiv:2410.10855},
+    year={2025}
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Special container for paper figures with neutral background */
+.paper-figure-container {
+    background: #f1f5f9;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.paper-figure-container img {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button {
+    @apply px-4 py-2 rounded-lg text-sm font-medium transition-colors;
+    @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+}
+
+.tab-button.active {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.tab-content {
+    @apply transition-all duration-300;
+}
+</style> 
+
+<script>
+function selectDeploymentMethod(method) {
+    // Remove selected state from all cards
+    document.querySelectorAll('.deployment-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+    
+    // Add selected state to clicked card
+    document.querySelector(`[data-method="${method}"]`).classList.add('selected');
+    
+    // Show corresponding tab
+    showTab(method);
+}
+
+function showTab(tabName) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+    });
+    
+    // Show selected tab content
+    document.getElementById(tabName + '-tab').classList.remove('hidden');
+    
+    // Trigger Prism.js to highlight code
+    if (typeof Prism !== 'undefined') {
+        Prism.highlightAll();
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Select first deployment method by default WITHOUT scrolling
+    document.querySelector(`[data-method="local"]`).classList.add('selected');
+    showTab('local');
+    
+    // Highlight all code blocks
+    if (typeof Prism !== 'undefined') {
+        Prism.highlightAll();
+    }
+});
+</script> 

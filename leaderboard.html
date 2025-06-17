@@ -1,0 +1,210 @@
+---
+layout: default
+title: "LeaderBoard"
+description: "Core Knowledge Deficits in Multi-Modal Language Models"
+---
+
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">🚀 LeaderBoard</h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+                Core Cognitive Benchmarking ... Coming Soon!
+            </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center mb-10">
+            <a href="#total" 
+               class="inline-flex items-center bg-white text-slate-700 px-6 py-2.5 rounded-lg font-semibold hover:bg-slate-50 transition-all transform hover:scale-105 shadow-lg border border-slate-200">
+                🎬 <span class="ml-2">Image + Video</span>
+            </a>
+            <a href="#imageonly" 
+               class="inline-flex items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg">
+                📷 <span class="ml-2">Image only</span>
+            </a>
+            <a href="#single" 
+               class="inline-flex items-center bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg">
+                🖼️ <span class="ml-2">Single Image</span>
+            </a>
+            
+        </div>
+
+        
+  </div>
+</section>
+
+<!-- LeaderBoard -->
+<!-- Total -->
+<section id="total" class="py-20 bg-white">
+    <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Total: Image + Video
+        </h2>
+    </div>
+   
+    <div  class="overflow-x-auto max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 border border-gray-200 rounded-lg">
+      <table id="leaderboard-table-total" class="min-w-full table-auto text-sm text-left text-gray-600">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="sticky top-0 z-10 bg-gray-100 px-4 py-2 font-semibold text-gray-900"><button type="button" class="w-full text-left" data-key="model_name">Model</button></th>
+            {% assign fields = "boundary,continuity,permanence,spatiality,perceptualconstancy,intuitivephysics,perspective,conservation,hierarchy,intentionality,mechanicalreasoning,toolusing,mean" | split: "," %}
+            {% for field in fields %}
+            <th class="sticky top-0 z-10 bg-gray-100 px-4 py-2 font-semibold text-gray-900">
+              <button type="button" class="w-full text-left" data-key="{{ field }}">{{ field | replace: '_', ' ' | capitalize }}</button>
+            </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body-total">
+          {% for row in site.data.leaderboard_total %}
+          <tr class="border-t border-gray-200">
+            <td class="px-4 py-2 font-medium text-gray-900">{{ row.model_name }}</td>
+            {% for field in fields %}
+              {% assign value = row[field] | plus: 0 %}
+              <td class="px-4 py-2 {% if value >= 90 %}bg-green-100 font-semibold{% endif %}" data-key="{{ field }}">{{ value | round: 2 }}%</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</section>
+
+<section id="imageonly" class="py-20 bg-orange">
+    <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Image only
+    </h2>
+    </div>
+    
+    <div  class="overflow-x-auto max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 border border-gray-200 rounded-lg">
+      <table id="leaderboard-table-imageonly" class="min-w-full table-auto text-sm text-left text-gray-600">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="sticky top-0 z-10 bg-gray-100 px-4 py-2 font-semibold text-gray-900"><button type="button" class="w-full text-left" data-key="model_name">Model</button></th>
+            {% assign fields = "boundary,continuity,permanence,spatiality,perceptualconstancy,intuitivephysics,perspective,conservation,hierarchy,intentionality,mechanicalreasoning,toolusing,mean" | split: "," %}
+            {% for field in fields %}
+            <th class="sticky top-0 z-10 bg-gray-100 px-4 py-2 font-semibold text-gray-900">
+              <button type="button" class="w-full text-left" data-key="{{ field }}">{{ field | replace: '_', ' ' | capitalize }}</button>
+            </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body-imageonly">
+          {% for row in site.data.leaderboard_image_only %}
+          <tr class="border-t border-gray-200">
+            <td class="px-4 py-2 font-medium text-gray-900">{{ row.model_name }}</td>
+            {% for field in fields %}
+              {% assign value = row[field] | plus: 0 %}
+              <td class="px-4 py-2 {% if value >= 90 %}bg-green-100 font-semibold{% endif %}" data-key="{{ field }}">{{ value | round: 2 }}%</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</section>
+
+<section id="single" class="py-20 bg-white">
+    <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Single Image
+        </h2>
+    </div>
+    
+    <div  class="overflow-x-auto max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 border border-gray-200 rounded-lg">
+      <table id="leaderboard-table-single" class="min-w-full table-auto text-sm text-left text-gray-600">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="sticky top-0 z-10 bg-gray-100 px-4 py-2 font-semibold text-gray-900"><button type="button" class="w-full text-left" data-key="model_name">Model</button></th>
+            {% assign fields = "boundary,continuity,permanence,spatiality,perceptualconstancy,intuitivephysics,perspective,conservation,hierarchy,intentionality,mechanicalreasoning,toolusing,mean" | split: "," %}
+            {% for field in fields %}
+            <th class="sticky top-0 z-10 bg-gray-100 px-4 py-2 font-semibold text-gray-900">
+              <button type="button" class="w-full text-left" data-key="{{ field }}">{{ field | replace: '_', ' ' | capitalize }}</button>
+            </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body-single">
+          {% for row in site.data.leaderboard_single %}
+          <tr class="border-t border-gray-200">
+            <td class="px-4 py-2 font-medium text-gray-900">{{ row.model_name }}</td>
+            {% for field in fields %}
+              {% assign value = row[field] | plus: 0 %}
+              <td class="px-4 py-2 {% if value >= 90 %}bg-green-100 font-semibold{% endif %}" data-key="{{ field }}">{{ value | round: 2 }}%</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</section>
+
+<script>
+function highlightMaxValues(table) {
+  const headers = Array.from(table.querySelectorAll('thead th button')).map(btn => btn.dataset.key);
+  const rows = Array.from(table.querySelectorAll('tbody tr'));
+
+  headers.forEach(key => {
+    if (key === 'model_name') return; // skip text column
+
+    let max = -Infinity;
+    let maxCells = [];
+
+    rows.forEach(row => {
+      const cell = row.querySelector(`td[data-key="${key}"]`);
+      if (!cell) return;
+      const val = parseFloat(cell.textContent.replace('%', '').trim());
+      if (isNaN(val)) return;
+
+      if (val > max) {
+        max = val;
+        maxCells = [cell];
+      } else if (val === max) {
+        maxCells.push(cell);
+      }
+    });
+
+    maxCells.forEach(cell => cell.classList.add('bg-yellow-100', 'font-bold'));
+  });
+}
+
+document.querySelectorAll('table').forEach(table => {
+  const tbody = table.querySelector('tbody');
+
+  const sortAndHighlight = (button) => {
+    const key = button.getAttribute('data-key');
+    const isNumeric = key !== 'model_name';
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const currentDir = button.getAttribute('data-dir') || 'asc';
+    const newDir = currentDir === 'asc' ? 'desc' : 'asc';
+    button.setAttribute('data-dir', newDir);
+
+    rows.sort((a, b) => {
+      const aVal = a.querySelector(`[data-key="${key}"]`)?.textContent.replace('%', '').trim() || '';
+      const bVal = b.querySelector(`[data-key="${key}"]`)?.textContent.replace('%', '').trim() || '';
+      return isNumeric
+        ? (newDir === 'asc' ? aVal - bVal : bVal - aVal)
+        : (newDir === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal));
+    });
+
+    tbody.innerHTML = '';
+    rows.forEach(row => tbody.appendChild(row));
+
+    // Remove old highlights
+    table.querySelectorAll('td.bg-yellow-100').forEach(td => {
+      td.classList.remove('bg-yellow-100', 'font-bold');
+    });
+
+    // Highlight max values
+    highlightMaxValues(table);
+  };
+
+  table.querySelectorAll('thead button').forEach(button => {
+    button.addEventListener('click', () => sortAndHighlight(button));
+  });
+
+  // Highlight on initial load
+  highlightMaxValues(table);
+});
+</script>

@@ -1,0 +1,46 @@
+title: Core Cognition"
+description: "Core Knowledge Deficits in Multi-Modal Language Models"
+url: "https://grow-ai-like-a-child.github.io"
+baseurl: "/CoreCognition"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  authors:
+    output: false
+
+# Exclude files
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - postcss.config.js
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - README.md
+
+# Social links
+github_username: grow-ai-like-a-child
+paper_url: "https://arxiv.org/abs/2410.10855"
+huggingface_url: "https://huggingface.co/grow-ai-like-a-child"
+pypi_url: ""
+
+# Project info
+version: "1.0.1"
+license: "Apache-2.0"
+
+# GitHub Pages specific settings
+github: [metadata]
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge 
