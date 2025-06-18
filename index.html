@@ -18,7 +18,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
             </p>
             <p>
                 To explore the core knowledge representation in MLLMs, we introduce <strong>CoreCognition</strong>, a large-scale benchmark encompassing 12 core knowledge concepts grounded in developmental cognitive science.
-                We evaluate 230 models with 11 different prompts, leading to a total of 2,530 data points for analysis. Our experiments uncover four key findings, collectively demonstrating core knowledge deficits in MLLMs: they consistently underperform and show reduced, or even absent, scalability on low-level abilities relative to high-level ones.
+                We evaluate 230 models with 11 different prompts, leading to a total of 1503 data points for analysis. Our experiments uncover four key findings, collectively demonstrating core knowledge deficits in MLLMs: they consistently underperform and show reduced, or even absent, scalability on low-level abilities relative to high-level ones.
             </p>
             <p>
                 Finally, we propose <strong>Concept Hacking</strong>, a novel controlled evaluation method, that reveals MLLMs fail to progress toward genuine core knowledge understanding, but instead rely on shortcut learning as they scale.
@@ -68,9 +68,9 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                 <sup>1</sup>University of California San Diego &emsp;
                 <sup>2</sup>Johns Hopkins University &emsp;
                 <sup>3</sup>Emory University &emsp;
-                <sup>4</sup>University of North Carolina at Chapel Hill &emsp;
             </div>
             <div class="mb-4 font-bold">
+                <sup>4</sup>University of North Carolina at Chapel Hill &emsp;
                 <sup>5</sup>Stanford University &emsp;
                 <sup>6</sup>Ben-Gurion University of the Negev &emsp;
             </div>
@@ -135,7 +135,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                                 </div>
                                 <h4 class="text-lg font-bold text-gray-900">Discriminativeness</h4>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed text-justify">
+                            <p class="text-sm text-gray-700 leading-relaxed text-left">
                                 Instances should be structured such that models lacking the targeted core knowledge necessarily select the <strong class="text-red-600">incorrect answers</strong>, thereby ensuring the discriminative power.
                             </p>
                         </div>
@@ -150,7 +150,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                                 </div>
                                 <h4 class="text-lg font-bold text-gray-900">Minimal Confounding</h4>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed text-justify">
+                            <p class="text-sm text-gray-700 leading-relaxed text-left">
                                 Questions should minimize reliance on confounding capabilities, such as <strong>object recognition</strong>, and must avoid conceptual overlap with other core knowledge included in the benchmark.
                             </p>
                         </div>
@@ -166,7 +166,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                                 </div>
                                 <h4 class="text-lg font-bold text-gray-900">Minimal Text Shortcut</h4>
                             </div>
-                            <p class="text-sm text-gray-700 leading-relaxed text-justify">
+                            <p class="text-sm text-gray-700 leading-relaxed text-left">
                                 Instances should be crafted so that answers cannot be derived through textual shortcuts alone but require <strong class="text-blue-600">genuine multimodal comprehension</strong>.
                             </p>
                         </div>
@@ -190,6 +190,13 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
             </div>
         </div>
 
+        <!-- Data Curation Process Figure -->
+        <div class="paper-figure-container mx-auto max-w-5xl mb-12 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <img src="{{ '/assets/images/Data_curation.png' | relative_url }}" 
+                 alt="Data Curation Process and Methodology" 
+                 class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+
             <!-- Twelve Core Concepts Card -->
             <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div class="flex items-center mb-6">
@@ -210,7 +217,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Permanence</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">Objects do not cease to exist when they are no longer perceived.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">Objects do not cease to exist when they are no longer perceived.</p>
                             </div>
                         </div>
                     </div>
@@ -223,7 +230,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Continuity</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">Objects persist as unified, cohesive entities across space and time.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">Objects persist as unified, cohesive entities across space and time.</p>
                             </div>
                             </div>
                         </div>
@@ -236,7 +243,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Boundary</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">The transition from one object to another.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">The transition from one object to another.</p>
                             </div>
                         </div>
                     </div>
@@ -249,10 +256,10 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Spatiality</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">The <em>a priori</em> understanding of the Euclidean properties of the world.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">The <em>a priori</em> understanding of the Euclidean properties of the world.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
                     <!-- 5. Perceptual Constancy -->
                     <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D7F0FE;">
@@ -262,7 +269,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Perceptual Constancy</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">Changes in appearances don't mean changes in physical properties.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">Changes in appearances don't mean changes in physical properties.</p>
                             </div>
                         </div>
                     </div>
@@ -272,10 +279,10 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                         <div class="flex items-start">
                             <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #BEE4FD;">
                                 <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">6</span>
-                    </div>
-                    <div>
+                            </div>
+                            <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Intuitive Physics</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">Intuitions about the laws of how things interact in the physical world.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">Intuitions about the laws of how things interact in the physical world.</p>
                             </div>
                         </div>
                     </div>
@@ -288,9 +295,9 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Perspective</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">To see what others see.</p>
-                    </div>
-                </div>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">To see what others see.</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- 8. Hierarchy -->
@@ -301,7 +308,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Hierarchy</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">Understanding of inclusion and exclusion of objects and categories.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">Understanding of inclusion and exclusion of objects and categories.</p>
                             </div>
                             </div>
                         </div>
@@ -314,7 +321,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Conservation</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">Invariances of properties despite transformations.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">Invariances of properties despite transformations.</p>
                             </div>
                         </div>
                     </div>
@@ -327,7 +334,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Tool Use</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">The capacity to manipulate specific objects to achieve goals.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">The capacity to manipulate specific objects to achieve goals.</p>
                             </div>
                         </div>
                     </div>
@@ -340,10 +347,10 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Intentionality</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">To see what others want.</p>
-                </div>
-            </div>
-        </div>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">To see what others want.</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- 12. Mechanical Reasoning -->
                     <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #CFFAFE;">
@@ -353,10 +360,10 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Mechanical Reasoning</h4>
-                                <p class="text-sm text-gray-700 leading-relaxed text-justify">Inferring actions from system states and vice versa.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed text-left">Inferring actions from system states and vice versa.</p>
                             </div>
                         </div>
-                </div>
+                    </div>
                 </div>
             </div>
 
@@ -386,14 +393,14 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                 
                     <!-- Statistic 3 -->
                     <div>
-                        <div class="text-5xl font-bold text-purple-500 mb-2">&gt;26k</div>
-                        <div class="text-gray-700 font-medium">Total Judgments</div>
+                        <div class="text-5xl font-bold text-blue-500 mb-2">1503</div>
+                        <div class="text-gray-700 font-medium">Image-Question Pairs</div>
                 </div>
                 
                     <!-- Statistic 4 -->
                     <div>
-                        <div class="text-5xl font-bold text-blue-500 mb-2">2,530</div>
-                        <div class="text-gray-700 font-medium">Image-Question Pairs</div>
+                        <div class="text-5xl font-bold text-purple-500 mb-2">&gt;3800k</div>
+                        <div class="text-gray-700 font-medium">Total Judgments</div>
                     </div>
                 </div>
             </div>
@@ -412,7 +419,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Key Findings</h2>            
-            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed text-justify">
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed text-center">
                 Our study uncovers <strong>four primary shortcomings</strong> shared by state-of-the-art MLLMs:
             </p>
         </div>
@@ -575,7 +582,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                         </div>
                         <h4 class="text-lg font-bold text-gray-900">Core Knowledge</h4>
                     </div>
-                    <p class="text-sm text-gray-700 leading-relaxed text-justify">
+                    <p class="text-sm text-gray-700 leading-relaxed text-left">
                         Correct responses on both controlled and manipulated tasks indicate genuine conceptual understanding.
                     </p>
                 </div>
@@ -590,7 +597,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                         </div>
                         <h4 class="text-lg font-bold text-gray-900">Shortcut-taking</h4>
                     </div>
-                    <p class="text-sm text-gray-700 leading-relaxed text-justify">
+                    <p class="text-sm text-gray-700 leading-relaxed text-left">
                         Models exploiting training data similarities perform well on controlled tasks but fail when familiar patterns are paired with inverted labels.
                     </p>
                 </div>
@@ -605,7 +612,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                         </div>
                         <h4 class="text-lg font-bold text-gray-900">Core Deficits</h4>
                     </div>
-                    <p class="text-sm text-gray-700 leading-relaxed text-justify">
+                    <p class="text-sm text-gray-700 leading-relaxed text-left">
                         Incorrect responses to controlled tasks, regardless of manipulation performance, indicate the absence of core knowledge.
                     </p>
                 </div>
@@ -625,7 +632,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Citation</h2>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto text-justify">
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto text-center">
                 If you find this project useful in your research, please consider citing:
             </p>
         </div>
