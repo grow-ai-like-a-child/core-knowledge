@@ -2,7 +2,7 @@
 Official Codebase for ICML 2025 paper.
 >[__"Core Knowledge Deficits in Multi-Modal Language Models"__](https://arxiv.org/abs/2410.10855)<br>
 >Yijiang Li, Qingying Gao, Tianwei Zhao, Bingyang Wang, Haoran Sun, Haiyun Lyu, Dezhi Luo, Hokin Deng<br>
-[`[Paper]`](https://arxiv.org/abs/2410.10855) [`[Code]`](https://github.com/williamium3000/core-knowledge) [`[Dataset (To be release)]`]() [`[Webpage]`](https://williamium3000.github.io/core-knowledge/)
+[`[Paper]`](https://arxiv.org/abs/2410.10855) [`[Code]`](https://github.com/williamium3000/core-knowledge) [`[Dataset (To be release)]`]() [`[Website]`](https://williamium3000.github.io/core-knowledge/)
 
 ***Abstract.***
 > While Multi-modal Large Language Models (MLLMs) demonstrate impressive abilities over high-level perception and reasoning, their robustness in the wild still lags behind humans and exhibits diminished efficacy on simple tasks that are
