@@ -32,7 +32,7 @@ exclude:
 # Social links
 github_username: williamium3000
 paper_url: "https://arxiv.org/abs/2410.10855"
-huggingface_url: "https://huggingface.co/grow-ai-like-a-child"
+huggingface_url: ""
 pypi_url: ""
 
 # Project info
