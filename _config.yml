@@ -30,7 +30,7 @@ exclude:
   - README.md
 
 # Social links
-github_username: williamium3000
+github_username: williamium3000/core-knowledge
 paper_url: "https://arxiv.org/abs/2410.10855"
 huggingface_url: ""
 pypi_url: ""
