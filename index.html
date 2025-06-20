@@ -551,8 +551,32 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
     </div>
 </section>
 
+<!-- Does Reasoning Help? -->
+<section class="py-16 bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Does Reasoning Help?</h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed text-justify">
+                To examine whether reasoning and test-time scaling enhance performance on core cognitive abilities, we evaluate both reasoning-augmented models and their corresponding instruction-tuned counterparts.
+            </p>
+        </div>
+
+        <div class="paper-figure-container mx-auto max-w-5xl mb-12 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <img src="{{ '/assets/images/fig_reasoning_by_concept_p0.png' | relative_url }}" 
+                 alt="Reasoning performance comparison across core cognitive concepts" 
+                 class="w-full h-auto rounded-lg shadow-sm">
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+            <p class="text-lg text-gray-700 leading-relaxed text-justify">
+                Reasoning abilities and test-time scaling do not confer a clear advantage over instruction-tuned models. In 10 of 12 core abilities, no significant differences are observed. The only two exceptions fail to exhibit a consistent trend (perceptual constancy, where reasoning models perform better <em>(P=0.0669)</em>, and perspective taking, where they perform worse <em>(P=0.0037)</em>). Overall, reasoning models show a modest, non-significant average improvement.
+            </p>
+        </div>
+    </div>
+</section>
+
 <!-- Concept Hacking -->
-<section class="py-16 bg-gradient-to-br from-orange-50 to-white-50">
+<section class="py-16 bg-gradient-to-br bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Concept Hacking: A Controlled Experiment</h2>
