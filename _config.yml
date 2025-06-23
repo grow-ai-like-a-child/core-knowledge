@@ -32,7 +32,7 @@ exclude:
 # Social links
 github_username: williamium3000/core-knowledge
 paper_url: "https://arxiv.org/abs/2410.10855"
-huggingface_url: ""
+huggingface_url: "https://huggingface.co/datasets/williamium/CoreCognition"
 pypi_url: ""
 
 # Project info
