@@ -34,7 +34,7 @@ github_username: williamium3000/core-knowledge
 paper_url: "https://arxiv.org/abs/2410.10855"
 huggingface_url: "https://huggingface.co/datasets/williamium/CoreCognition"
 pypi_url: ""
-
+code_url: https://github.com/williamium3000/core-knowledge
 # Project info
 version: "1.0.1"
 license: "Apache-2.0"

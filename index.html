@@ -35,6 +35,10 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                class="inline-flex items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg">
                 🤗 <span class="ml-2">Dataset</span>
             </a>
+            <a href="{{ site.code_url | default: '#' }}" 
+               class="inline-flex items-center bg-gradient-to-r from-gray-700 to-gray-900 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-gray-800 hover:to-black transition-all transform hover:scale-105 shadow-lg">
+                💻 <span class="ml-2">Code</span>
+            </a>
         </div>
     </div>
 </section>
@@ -94,7 +98,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">CoreCognition Benchmark</h2>
             <p class="text-xl text-gray-600 max-w-4xl mx-auto text-justify">
-                CoreCognition evaluates twelve foundational cognitive concepts through a large-scale suite of controlled visual question-answer tasks. It reveals systematic <strong>core knowledge deficits</strong> in today's multi-modal large language models (MLLMs).
+                CoreCognition evaluates 12 core knowledge concepts through a large-scale suite of controlled visual question-answer tasks. It reveals systematic <strong>core knowledge deficits</strong> in existing Multi-modal Large Language Models (MLLMs).
             </p>
         </div>
 
@@ -119,7 +123,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                 
                 <div class="space-y-6">
                     <p class="text-lg text-gray-700 leading-relaxed text-justify">
-                        Building upon the above cognitive framework, we operationalize theoretical constructs into explicit examples designed to probe specific core abilities in MLLMs. To ensure conceptual integrity and interdisciplinary rigor, we establish criteria that define successful instances:
+                        Building upon the cognitive framework, we operationalize theoretical constructs into explicit examples designed to probe specific core abilities in MLLMs. To ensure conceptual integrity and interdisciplinary rigor, we establish criteria that define successful instances:
                     </p>
                     
                     <div class="grid md:grid-cols-3 gap-6">
@@ -136,7 +140,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                                 <h4 class="text-lg font-bold text-gray-900">Discriminativeness</h4>
                             </div>
                             <p class="text-sm text-gray-700 leading-relaxed text-justify">
-                                Instances should be structured such that models lacking the targeted core knowledge necessarily select the <strong class="text-red-600">incorrect answers</strong>, thereby ensuring the discriminative power.
+                                Instances should be structured such that models lacking the targeted core knowledge necessarily select the incorrect answers, thereby ensuring the <strong class="text-red-600">discriminative</strong> power.
                             </p>
                         </div>
                         
@@ -151,7 +155,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                                 <h4 class="text-lg font-bold text-gray-900">Minimal Confounding</h4>
                             </div>
                             <p class="text-sm text-gray-700 leading-relaxed text-justify">
-                                Questions should minimize reliance on confounding capabilities, such as <strong>object recognition</strong>, and must avoid conceptual overlap with other core knowledge included in the benchmark.
+                                Questions should minimize reliance on <strong>confounding capabilities</strong>, such as object recognition, and must <strong>avoid conceptual overlap</strong> with other core knowledge included in the benchmark.
                             </p>
                         </div>
                         
@@ -167,7 +171,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                                 <h4 class="text-lg font-bold text-gray-900">Minimal Text Shortcut</h4>
                             </div>
                             <p class="text-sm text-gray-700 leading-relaxed text-justify">
-                                Instances should be crafted so that answers cannot be derived through textual shortcuts alone but require <strong class="text-blue-600">genuine multimodal comprehension</strong>.
+                                Instances should be crafted so that answers cannot be derived through <strong class="text-blue-600">textual shortcuts</strong> alone but require <strong class="text-blue-600">genuine multimodal comprehension</strong>.
                             </p>
                         </div>
                     </div>
@@ -197,7 +201,11 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
         </div>
 
         <!-- Data Curation Process Figure -->
-
+            <div class="paper-figure-container mb-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                <img src="{{ '/assets/images/figure2_camready_new.png' | relative_url }}" 
+                     alt="Illustration of 12 core concepts tasks"
+                     class="w-full h-auto rounded-lg shadow-sm">
+            </div>
             <!-- Twelve Core Concepts Card -->
             <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                 <div class="flex items-center mb-6">
@@ -404,11 +412,6 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                         <div class="text-gray-700 font-medium">Total Judgments</div>
                     </div>
                 </div>
-            </div>
-            <div class="paper-figure-container mb-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
-                <img src="{{ '/assets/images/figure2_camready_new.png' | relative_url }}" 
-                     alt="Illustration of 12 core concepts tasks"
-                     class="w-full h-auto rounded-lg shadow-sm">
             </div>
         </div>
     </div>
