@@ -103,7 +103,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
         </div>
 
         <!-- Illustration of the 12 concepts -->
-        <div class="paper-figure-container mx-auto max-w-4xl mb-12 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+        <div class="paper-figure-container mx-auto max-w-3xl mb-12 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
             <img src="{{ '/assets/images/CogDev_illustration_vARXIV.png' | relative_url }}" 
                  alt="Illustration of the twelve core cognitive concepts" 
                  class="w-full h-auto rounded-lg shadow-sm">
@@ -266,9 +266,9 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Spatiality</h4>
                                 <p class="text-sm text-gray-700 leading-relaxed text-justify">The <em>a priori</em> understanding of the Euclidean properties of the world.</p>
-                            </div>
-                        </div>
                     </div>
+                </div>
+            </div>
 
                     <!-- 5. Perceptual Constancy -->
                     <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #D7F0FE;">
@@ -288,8 +288,8 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                         <div class="flex items-start">
                             <div class="rounded-lg mr-4 mt-1 flex-shrink-0" style="background-color: #BEE4FD;">
                                 <span class="w-14 h-14 flex items-center justify-center font-bold text-4xl text-gray-800">6</span>
-                            </div>
-                            <div>
+                    </div>
+                    <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Intuitive Physics</h4>
                                 <p class="text-sm text-gray-700 leading-relaxed text-justify">Intuitions about the laws of how things interact in the physical world.</p>
                             </div>
@@ -305,8 +305,8 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Perspective</h4>
                                 <p class="text-sm text-gray-700 leading-relaxed text-justify">To see what others see.</p>
-                            </div>
-                        </div>
+                    </div>
+                </div>
                     </div>
                     
                     <!-- 8. Hierarchy -->
@@ -357,9 +357,9 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                             <div>
                                 <h4 class="text-lg font-bold text-gray-900 mb-2">Intentionality</h4>
                                 <p class="text-sm text-gray-700 leading-relaxed text-justify">To see what others want.</p>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </div>
 
                     <!-- 12. Mechanical Reasoning -->
                     <div class="p-6 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md" style="background-color: #CFFAFE;">
@@ -372,7 +372,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                                 <p class="text-sm text-gray-700 leading-relaxed text-justify">Inferring actions from system states and vice versa.</p>
                             </div>
                         </div>
-                    </div>
+                </div>
                 </div>
             </div>
 
@@ -465,8 +465,8 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                         <h3 class="text-2xl font-bold text-gray-800 mb-3">Predictability</h3>
                         <p class="text-base text-gray-700 leading-relaxed text-justify">Performance on core knowledge is predictive of higher-level abilities.</p>
                     </div>
-                </div>
             </div>
+        </div>
 
             <!-- Finding 4 -->
             <div class="rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-pointer active:scale-95" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
@@ -504,7 +504,7 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">Dependencies Between Core Abilities</h2>
         <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-8 text-justify">
-            Examining the interdependencies among core abilities provides a principled understanding of whether models develop coherent, hierarchically structured competencies akin to those seen in humans. To quantify the degree of co-variation consistent with developmental hierarchies, we compute Pearson correlations between performances across all 12 abilities. The results reveal a distinct divergence: many correlations are <strong class="text-orange-600">modest (ρ < 0.4)</strong>, while some clusters exhibit <strong class="text-green-600">strong alignment (ρ > 0.65)</strong>.
+            Examining the interdependencies among core abilities provides a principled understanding of whether models develop coherent, hierarchically structured competencies akin to those seen in humans. To quantify the degree of co-variation consistent with developmental hierarchies, we compute Pearson correlations between performances across all 12 abilities. The results reveal a distinct divergence: many correlations are <strong>modest (ρ < 0.4)</strong>, while some clusters exhibit <strong>strong alignment (ρ > 0.65)</strong>.
         </p>
         <div class="paper-figure-container mx-auto max-w-3xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
             <img src="{{ '/assets/images/top120total_corr(selected_v2).png' | relative_url }}" 
@@ -544,11 +544,11 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
             <img src="{{ '/assets/images/scalling_v2.png' | relative_url }}" 
                  alt="Scaling analysis across model sizes" 
                  class="w-full h-auto rounded-lg shadow-sm">
-        </div>
-        
+            </div>
+
         <div class="max-w-4xl mx-auto">
             <p class="text-lg text-gray-700 leading-relaxed text-justify">
-                Our results reveal a clear dissociation between <strong class="text-blue-600">low-level</strong> and <strong class="text-green-600">high-level</strong> abilities regarding scaling effects. For seven out of nine low-level abilities—excluding hierarchical relation and perceptual constancy—in the <em>Sensorimotor</em> and <em>Concrete Operational</em> stages, model performance shows significantly less improvement with increasing size, compared to the higher-level <em>Formal Operational</em> stage. Notably, perspective-taking ability even declines with scale, likely due to a persistent egocentric bias that intensifies as models grow larger. These findings indicate that <strong class="text-orange-600">scaling primarily benefits high-level reasoning</strong>, while its impact on low-level cognitive abilities is limited or even negative. This suggests that simply increasing model size is insufficient for developing core knowledge in MLLMs.
+                Our results reveal a clear dissociation between low-level and high-level abilities regarding scaling effects. For seven out of nine low-level abilities—excluding hierarchical relation and perceptual constancy—in the <em>Sensorimotor</em> and <em>Concrete Operational</em> stages, model performance shows significantly less improvement with increasing size, compared to the higher-level <em>Formal Operational</em> stage. Notably, perspective-taking ability even declines with scale, likely due to a persistent egocentric bias that intensifies as models grow larger. These findings indicate that <strong>scaling primarily benefits high-level reasoning</strong>, while its impact on low-level cognitive abilities is limited or even negative. This suggests that simply increasing model size is insufficient for developing core knowledge in MLLMs.
             </p>
         </div>
     </div>
@@ -568,14 +568,14 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
             <img src="{{ '/assets/images/fig_reasoning_by_concept_p0.png' | relative_url }}" 
                  alt="Reasoning performance comparison across core cognitive concepts" 
                  class="w-full h-auto rounded-lg shadow-sm">
-        </div>
+                        </div>
         
         <div class="max-w-4xl mx-auto">
             <p class="text-lg text-gray-700 leading-relaxed text-justify">
                 Reasoning abilities and test-time scaling do not confer a clear advantage over instruction-tuned models. In 10 of 12 core abilities, no significant differences are observed. The only two exceptions fail to exhibit a consistent trend (perceptual constancy, where reasoning models perform better <em>(P=0.0669)</em>, and perspective taking, where they perform worse <em>(P=0.0037)</em>). Overall, reasoning models show a modest, non-significant average improvement.
             </p>
-        </div>
-    </div>
+                        </div>
+                    </div>
 </section>
 
 <!-- Concept Hacking -->
@@ -588,16 +588,83 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
             </p>
         </div>
 
-        <div class="paper-figure-container mx-auto max-w-5xl mb-12 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                <div class="paper-figure-container mx-auto max-w-5xl mb-12 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
             <img src="{{ '/assets/images/final_3.png' | relative_url }}" 
                  alt="Concept hacking methodology and examples" 
                  class="w-full h-auto rounded-lg shadow-sm">
         </div>
         
+        <div class="max-w-4xl mx-auto mb-8">
+            <p class="text-lg text-gray-700 leading-relaxed text-justify">
+                For example, in the <strong class="text-blue-600">perceptual constancy</strong> task illustrated above, <strong>GPT-4o</strong> correctly produced reasoning that seemingly reflects the understanding of perceptual constancy (<em>"the converging lines of the bridge create an illusion of decreasing width"</em>) when answering the manipulation task, even though the width of the bridge is actually decreasing, signaling that its reasoning is not based on the visual information presented in the image.
+            </p>
+        </div>
+        
         <div class="max-w-4xl mx-auto mb-12">
             <p class="text-lg text-gray-700 leading-relaxed mb-8 text-justify">
-                Given a pair of tasks, it yields <strong>3</strong> possible MLLM response patterns:
+                Given a pair of tasks, it yields <strong>4</strong> possible outcome types, and <strong>3</strong> MLLM response patterns:
             </p>
+
+            <!-- Table 4: Four types of outcomes from MLLM -->
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-12 hover:shadow-xl transition-all duration-300">
+                <div class="overflow-x-auto">
+                    <table class="w-full max-w-2xl mx-auto">
+                        <thead>
+                            <tr class="border-b-2 border-gray-300">
+                                <th class="text-left py-4 px-6 font-semibold text-gray-900 text-lg">Control</th>
+                                <th class="text-left py-4 px-6 font-semibold text-gray-900 text-lg">Manipulation</th>
+                                <th class="text-left py-4 px-6 font-semibold text-gray-900 text-lg">Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                                         <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                                 <td class="py-4 px-6">
+                                     <span class="text-green-600 font-bold text-2xl">✓</span>
+                                 </td>
+                                 <td class="py-4 px-6">
+                                     <span class="text-green-600 font-bold text-2xl">✓</span>
+                                 </td>
+                                 <td class="py-4 px-6">
+                                     <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-base font-medium">core knowledge</span>
+                                 </td>
+                             </tr>
+                             <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                                 <td class="py-4 px-6">
+                                     <span class="text-green-600 font-bold text-2xl">✓</span>
+                                 </td>
+                                 <td class="py-4 px-6">
+                                     <span class="text-red-600 font-bold text-2xl">✗</span>
+                                 </td>
+                                 <td class="py-4 px-6">
+                                     <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-base font-medium">shortcut</span>
+                                 </td>
+                             </tr>
+                             <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                                 <td class="py-4 px-6">
+                                     <span class="text-red-600 font-bold text-2xl">✗</span>
+                                 </td>
+                                 <td class="py-4 px-6">
+                                     <span class="text-green-600 font-bold text-2xl">✓</span>
+                                 </td>
+                                 <td class="py-4 px-6">
+                                     <span class="bg-red-100 text-red-800 px-4 py-2 rounded-full text-base font-medium">core deficits</span>
+                                 </td>
+                             </tr>
+                             <tr class="hover:bg-gray-50 transition-colors">
+                                 <td class="py-4 px-6">
+                                     <span class="text-red-600 font-bold text-2xl">✗</span>
+                                 </td>
+                                 <td class="py-4 px-6">
+                                     <span class="text-red-600 font-bold text-2xl">✗</span>
+                                 </td>
+                                 <td class="py-4 px-6">
+                                     <span class="bg-red-100 text-red-800 px-4 py-2 rounded-full text-base font-medium">core deficits</span>
+                                 </td>
+                             </tr>
+                        </tbody>
+                    </table>
+                        </div>
+                    </div>
             
             <div class="grid md:grid-cols-3 gap-6 mb-8">
                 <!-- Core Knowledge -->
@@ -645,11 +712,17 @@ description: "Core Knowledge Deficits in Multi-Modal Language Models"
                     </p>
                 </div>
             </div>
-            
+
             <div class="paper-figure-container mx-auto max-w-5xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
                 <img src="{{ '/assets/images/parrot_p0_scores_merge_match_model_camready.png' | relative_url }}" 
                      alt="MLLM response patterns analysis results" 
                      class="w-full h-auto rounded-lg shadow-sm">
+            </div>
+            
+            <div class="max-w-4xl mx-auto mt-12">
+                <p class="text-lg text-gray-700 leading-relaxed text-justify">
+                    The results demonstrated a clear segregation of models relying on shortcut-taking and illusory understanding. A significant proportion of models clustered within the <strong class="text-red-500">top left section</strong> of the chart (high manipulation accuracy, below-chance control accuracy), suggesting that these models extensively employed illusory understanding for problem-solving. In other words, they have a "core illusion" exemplified by a strong disposition toward a false understanding of the world. In contrast, a smaller portion of the models clustered within the <strong class="text-purple-500">bottom right section</strong> (high control accuracy, below-chance manipulation accuracy). These models were highly susceptible to manipulation, thereby revealing substantial reliance on shortcuts. Finally, a major proportion of models demonstrated both above-chance performance on manipulation and control tasks, but fell significantly behind humans on both.
+                </p>
             </div>
         </div>
     </div>
