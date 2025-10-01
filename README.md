@@ -2,7 +2,7 @@
 
 **Official website for the ICML 2025 paper submission**
 
-🌐 **Website**: [https://williamium3000.github.io/core-knowledge](https://williamium3000.github.io/core-knowledge)  
+🌐 **Website**: [https://grow-ai-like-a-child.github.io/core-knowledge/](https://grow-ai-like-a-child.github.io/core-knowledge/)  
 📄 **Paper**: [https://arxiv.org/abs/2410.10855](https://arxiv.org/abs/2410.10855)  
 🤗 **Dataset**: [https://huggingface.co/grow-ai-like-a-child](https://huggingface.co/grow-ai-like-a-child)
 
@@ -98,11 +98,6 @@ If you find this work useful in your research, please consider citing:
 }
 ```
 
-## 📧 Contact
-
-For questions about the paper or dataset, please contact the corresponding authors:
-- Dezhi Luo: [dezhi@umich.edu](mailto:dezhi@umich.edu)
-- Hokin Deng: [hokindeng@cmu.edu](mailto:hokindeng@cmu.edu)
 
 ## 🔧 Technical Details
 
