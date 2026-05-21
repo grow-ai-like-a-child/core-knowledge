@@ -10,6 +10,12 @@
 
 This repository contains the official website for our paper "Core Knowledge Deficits in Multi-Modal Language Models". The website presents our comprehensive evaluation of 230 multi-modal language models using the **CoreCognition** benchmark, which assesses 12 foundational cognitive concepts grounded in developmental cognitive science.
 
+## 🔔 News
+
+- **[2026-02-18]** 🚀🚀🚀 CoreCognition is now officially supported by [VLMEvalKit](https://github.com/open-compass/VLMEvalKit)! Researchers can evaluate their models on our benchmark directly through the toolkit. 
+- **[2026-02-08]** 🚀🚀🚀 CoreCognition is now officially supported by [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval)! Researchers can evaluate their models on our benchmark directly through the toolkit.
+- **[2025-07-29]** 🌟🌟🌟 The CoreCognition dataset is now available on [Hugging Face](https://huggingface.co/datasets/williamium/CoreCognition)!
+
 ## 🔍 Key Findings
 
 Our research reveals four critical shortcomings in state-of-the-art Multi-modal Large Language Models (MLLMs):
